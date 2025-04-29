@@ -1,0 +1,68 @@
+.article-content {
+  mark {
+    background-color: var(--lighten-color);
+  }
+
+  p {
+    line-height: 1.5em;
+  }
+
+  img {
+    max-width: calc(var(--main-width) - 3rem);
+  }
+
+  pre {
+    padding: 1rem;
+  }
+
+  li::marker,
+  ol::marker {
+    color: var(--primary-color);
+  }
+
+  abbr {
+    text-decoration-color: var(--primary-color);
+  }
+
+  a {
+    padding: 0.2rem;
+    color: var(--primary-color);
+    text-decoration: underline dotted var(--lighten-color);
+  }
+
+  a:hover {
+    background-color: var(--lighten-color);
+    transition: all 0.1s;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 0.5em 1em;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  thead {
+    border-bottom: 0.1rem solid #d0d0d0;
+  }
+
+  tbody tr {
+    border-top: 0.05rem solid #d0d0d0;
+  }
+}
+
+@media (max-width: 769px) {
+  .article-content {
+    overflow: auto;
+  }
+
+  .article-content img {
+    max-width: 100%;
+  }
+}

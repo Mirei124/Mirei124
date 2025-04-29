@@ -1,0 +1,61 @@
+.blog-card {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+}
+
+.meta-data {
+  color: #606060;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.sep {
+  color: #a0a0a0;
+  font-weight: normal;
+}
+
+span {
+  font-size: 1.5rem;
+  padding: 0.2rem;
+  position: relative;
+  margin: 0 0.2rem;
+  color: var(--accent-color);
+  background-color: var(--btn-bg);
+}
+
+.pub-date,
+.cat,
+.tag-name {
+  position: relative;
+  padding: 0.3rem;
+}
+
+.pub-date,
+.cat,
+.tag {
+  margin: 0 0.5rem 0 0;
+}
+
+.cat:hover,
+.tag-name:hover {
+  background-color: var(--btn-bg);
+}
+
+.row-start {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  align-items: center;
+}
+
+.title {
+  position: relative;
+  left: -0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 1rem;
+  cursor: pointer;
+}
