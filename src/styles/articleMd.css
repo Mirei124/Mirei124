@@ -55,6 +55,27 @@
   tbody tr {
     border-top: 0.05rem solid #d0d0d0;
   }
+
+  p > code {
+    padding: 0.2rem;
+    background-color: var(--btn-bg);
+    color: var(--accent-color);
+  }
+
+  blockquote {
+    position: relative;
+    margin: 0.5em 2.5em;
+  }
+
+  blockquote::before {
+    content: "";
+    position: absolute;
+    width: 0.4rem;
+    height: 100%;
+    background-color: var(--primary-color);
+    top: 0;
+    left: -1em;
+  }
 }
 
 @media (max-width: 769px) {

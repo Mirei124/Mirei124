@@ -16,5 +16,5 @@ export function formatReadTime(contentLength) {
 export function calcDescription(blog) {
   return blog.data.description
     ? blog.data.description
-    : blog.body.substring(0, 200);
+    : blog.body.substring(0, 120) + "...";
 }
