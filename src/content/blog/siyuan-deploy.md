@@ -1,7 +1,7 @@
 ---
 title: "思源笔记Docker部署"
 pubDate: "2025-08-29T23:30"
-updatedDate: "2025-08-29T23:30"
+updatedDate: "2025-09-08T11:37"
 tags: ["Docker"]
 category: "技术向"
 ---
@@ -72,3 +72,35 @@ openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
 配置完以后用curl测试发现HTTPS没法正常访问，经过一番搜索了解到，直接使用IP访问时curl没法像访问域名一样提供SNI信息，导致nginx出错。通过设置nginx配置中的default_server可以让nginx在没有匹配到server_name时使用默认的server_name，而不是报错。于是把原来的配置中 `listen 443 ssl;` 修改成 `listen 443 ssl default_server;` 以后就能正常访问了。
 
 配置完成后用curl指定SNI信息进行测试：`curl https://DOMAIN.EXAMPLE --resolve 'DOMAIN.EXAMPLE:443:192.0.2.17'`，使用 `-k` 选项可以忽略证书错误。单独测试证书配置对不对需要使用 `openssl s_client -connect 1.2.3.4:443 -servername example.com` 看返回的证书和域名是否对应。
+
+补充：隐藏顶栏和页签的css设置：
+
+```css
+@media (min-width: 750px) {
+  /* 隐藏页签 */
+  .layout__wnd--active > div:nth-child(1) {
+    display: none;
+  }
+  /* 隐藏顶栏 */
+  .toolbar {
+    height: 0.2em;
+    transition: height 0.4s;
+  }
+  .toolbar:hover {
+    height: 2em;
+    transition: height 0.4s;
+  }
+  .toolbar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.2em;
+    background-color: white;
+  }
+  .toolbar:hover::after {
+    height: 0;
+  }
+}
+```
