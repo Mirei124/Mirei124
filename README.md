@@ -1,62 +1,22 @@
-# Astro Starter Kit: Blog
-
-```sh
-pnpm create astro@latest -- --template blog
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+<h1 align="center">Hi 👋, I'm Connor @Mirei124</h1>
+<h3 align="center">Learning machine learning</h3>
+<hr />
+<div>
+  <a href="https://github.com/anuraghazra/github-readme-stats"><img
+      src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mirei124&amp;layout=compact&amp;theme=catppuccin_latte&amp;langs_count=6"
+      alt="Connor's Top Langs" /></a>
+</div>
+<p>
+  <img src="https://img.shields.io/badge/Linux-%23FCC624?style=for-the-badge&amp;logo=Linux&amp;logoColor=black"
+    alt="Linux" />&nbsp;<img
+    src="https://img.shields.io/badge/Archlinux-%231793D1?style=for-the-badge&amp;logo=archlinux&amp;logoColor=white"
+    alt="Archlinux" />&nbsp;<img
+    src="https://img.shields.io/badge/Neovim-%2357A143?style=for-the-badge&amp;logo=neovim&amp;logoColor=white"
+    alt="Neovim" />&nbsp;<img
+    src="https://img.shields.io/badge/Github-%23181717?style=for-the-badge&amp;logo=github&amp;logoColor=white"
+    alt="Github" />&nbsp;<img
+    src="https://img.shields.io/badge/Git-%23F05032?style=for-the-badge&amp;logo=github&amp;logoColor=white"
+    alt="Git" />
+  <img src="https://img.shields.io/badge/Zsh-%23F15A24?style=for-the-badge&amp;logo=zsh&amp;logoColor=white"
+    alt="Zsh" />
+</p>
