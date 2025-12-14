@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import { PER_PAGE_ITEM_NUM } from "../consts";
+import IndexLayout from "../layouts/IndexLayout.astro";
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blog");
+  const totalPageNum = Math.ceil(blogs.length / PER_PAGE_ITEM_NUM);
+
+  const pages = [...Array(totalPageNum).keys()].map((i) => {
+    return { params: { idx: i + 1 }, props: { curPageNum: i } };
+  });
+  return pages;
+}
+
+const { curPageNum } = Astro.props;
+if (curPageNum === 0) {
+  return Astro.rewrite("/");
+}
+---
+
+<IndexLayout curPageNum={curPageNum} />

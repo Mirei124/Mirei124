@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import { PER_PAGE_ITEM_NUM, SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseHead from "../components/BaseHead.astro";
+import BlogList from "../components/BlogList.astro";
+
+const { curPageNum } = Astro.props;
+
+const blogs = await getCollection("blog");
+const totalPageNum = Math.ceil(blogs.length / PER_PAGE_ITEM_NUM);
+blogs.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const curPageBlogs = blogs.slice(
+  curPageNum * PER_PAGE_ITEM_NUM,
+  (curPageNum + 1) * PER_PAGE_ITEM_NUM,
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="relative flex min-h-screen flex-col">
+    <BaseLayout>
+      <Fragment slot="main">
+        <BlogList
+          curPageBlogs={curPageBlogs}
+          curPageNum={curPageNum}
+          totalPageNum={totalPageNum}
+        />
+      </Fragment>
+    </BaseLayout>
+  </body>
+</html>

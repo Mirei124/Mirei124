@@ -1,0 +1,136 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_AUTHOR } from "../consts";
+import BaseLayout from "./BaseLayout.astro";
+import { render } from "astro:content";
+import { dateToString } from "../utils";
+import { SITE_HOST } from "../consts";
+import { FaCreativeCommons, FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+
+interface Props {
+  blog: CollectionEntry<"blog">;
+  prevBlog?: { title?: string; id_?: string } | null;
+  nextBlog?: { title?: string; id_?: string } | null;
+}
+
+const { blog, prevBlog, nextBlog } = Astro.props;
+const data = blog.data;
+const pubDate = data.pubDate;
+const updatedDate = data.updatedDate || data.pubDate;
+
+const { Content, headings } = await render(blog);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="relative flex min-h-screen flex-col">
+    <BaseLayout>
+      <Fragment slot="main">
+        <div class="h-4"></div>
+        <div class="rounded bg-white p-4">
+          <div class="text-center text-2xl font-semibold">{data.title}</div>
+          <div class="my-4 text-center text-gray-700">
+            发布于 {dateToString(pubDate)}，更新于 {dateToString(updatedDate)}
+          </div>
+          <div class="my-4 w-full border-1 border-dashed border-gray-400"></div>
+          <article class="prose dark:prose-invert prose-zinc max-w-none">
+            <Content />
+          </article>
+          <div class="relative mt-8 overflow-hidden rounded bg-gray-100 p-4">
+            <div class="text-lg font-medium">{data.title}</div>
+            <div class="my-1">
+              <a class="text-[var(--primary-color)]" href={`/blog/${blog.id}`}
+                >{`${SITE_HOST}/blog/${blog.id}`}</a
+              >
+            </div>
+            <table
+              class="border-separate border-spacing-x-8 border-spacing-y-2"
+            >
+              <tr class="text-gray-500"
+                ><td>作者</td><td>发布于</td><td>许可</td></tr
+              >
+              <tr
+                ><td>{SITE_AUTHOR}</td><td>{dateToString(pubDate)}</td><td
+                  ><a
+                    class="text-[var(--primary-color)]"
+                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                    >CC BY-NC-SA 4.0</a
+                  ></td
+                ></tr
+              >
+            </table>
+            <FaCreativeCommons
+              className="absolute top-1 right-1 h-4/3 w-max text-gray-200"
+            />
+          </div>
+        </div>
+
+        <div class="my-4 flex justify-between">
+          {
+            prevBlog?.title ? (
+              <>
+                <a href={`/blog/${prevBlog.id_}`}>
+                  <div class="flex items-center rounded bg-white p-4">
+                    <FaAngleLeft className="text-2xl" />
+                    &ensp;{prevBlog.title}
+                  </div>
+                </a>
+              </>
+            ) : (
+              <div />
+            )
+          }
+          {
+            nextBlog?.title ? (
+              <>
+                <a href={`/blog/${nextBlog.id_}`}>
+                  <div class="flex items-center rounded bg-white p-4">
+                    {nextBlog.title}&ensp;
+                    <FaAngleRight className="text-2xl" />
+                  </div>
+                </a>
+              </>
+            ) : (
+              <div />
+            )
+          }
+        </div>
+      </Fragment>
+      <div class="h-16"></div>
+    </BaseLayout>
+    <Fragment slot="right">
+      <div class="sticky top-44 m-4">
+        {
+          headings
+            .filter((x) => x.depth < 3)
+            .map((x) => (
+              <>
+                <a
+                  class="my-2 flex items-center justify-start"
+                  href={"#" + x.slug}
+                >
+                  <div class="whitespace-pre">
+                    {" ".repeat((x.depth - 1) * 5)}
+                  </div>
+                  <div class="mx-2 h-2 w-5 flex-shrink-0 rounded-xl bg-gray-300" />
+                  <div class="break-all text-gray-700 hover:text-[var(--primary-color)]">
+                    {x.text}
+                  </div>
+                </a>
+              </>
+            ))
+        }
+      </div>
+    </Fragment>
+  </body><style>
+    article.prose {
+      a {
+        @apply text-[var(--primary-color)];
+      }
+    }
+  </style>
+</html>

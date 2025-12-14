@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { FaFolderOpen, FaTags } from "react-icons/fa6";
+
+interface Props {
+  blog: CollectionEntry<"blog">;
+}
+
+const { blog } = Astro.props;
+const data = blog.data;
+
+const pubDate = data.pubDate;
+const pubYear = ("" + pubDate.getFullYear()).slice(2, 4);
+const pubMonth = pubDate.getMonth() + 1;
+const pubDay = pubDate.getDate();
+---
+
+<div class="my-4 rounded bg-white">
+  <div class="flex">
+    <div
+      class="flex flex-col items-center justify-center rounded bg-[var(--lighten-color)] p-4"
+    >
+      <div>{pubMonth}</div>
+      <div>{pubDay}</div>
+      <div>•</div>
+      <div>{pubYear}</div>
+    </div>
+    <div class="grid gap-2 p-4">
+      <a href={"/blog/" + blog.id}>
+        <div class="pb-2 text-xl font-semibold">{data.title}</div>
+        <div class="break-all">{blog.body?.slice(0, 120)}</div>
+      </a>
+      <div class="flex items-center text-sm text-gray-700">
+        <FaFolderOpen />&ensp;<a href={"/category/" + data.category}
+          >{data.category}</a
+        >&emsp;<FaTags />&ensp;{
+          data.tags.map((x) => <a href={"/tag/" + x}>{"#" + x}</a>)
+        }
+      </div>
+    </div>
+  </div>
+</div>

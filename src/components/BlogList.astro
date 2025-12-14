@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BlogItem from "./BlogItem.astro";
+import {
+  FaAngleLeft,
+  FaAngleRight,
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
+} from "react-icons/fa";
+import { range } from "../utils";
+import { getCollection } from "astro:content";
+
+interface Props {
+  curPageBlogs: CollectionEntry<"blog">[];
+  curPageNum: number;
+  totalPageNum: number;
+}
+
+const blogs = await getCollection("blog");
+blogs.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const { curPageBlogs, curPageNum, totalPageNum } = Astro.props;
+---
+
+<div class="flex h-full flex-col justify-between">
+  <div>
+    {curPageBlogs.map((x) => <BlogItem blog={x} />)}
+  </div>
+
+  <div class="my-4 flex w-full justify-center">
+    <div class="flex items-center gap-2">
+      <div class={"flex gap-2" + (curPageNum === 0 ? " invisible" : "")}>
+        <a href="/">
+          <FaAngleDoubleLeft
+            className="h-8 w-8 rounded-lg bg-white p-1 text-gray-700"
+          />
+        </a>
+        <a href={"/page" + curPageNum}>
+          <FaAngleLeft
+            className="h-8 w-8 rounded-lg bg-white p-1 text-gray-700"
+          />
+        </a>
+      </div>
+
+      {
+        range(
+          Math.max(1, curPageNum),
+          Math.min(totalPageNum + 1, curPageNum + 3),
+        ).map((x) =>
+          x === curPageNum + 1 ? (
+            <a href={"/page" + x}>
+              <div class="h-8 w-8 rounded-lg bg-[var(--lighten-color)] p-1 text-center font-semibold text-gray-700">
+                {x}
+              </div>
+            </a>
+          ) : (
+            <a href={"/page" + x}>
+              <div class="h-8 w-8 rounded-lg bg-white p-1 text-center font-semibold text-gray-700">
+                {x}
+              </div>
+            </a>
+          ),
+        )
+      }
+
+      <div
+        class={"flex gap-2" +
+          (curPageNum === totalPageNum - 1 ? " invisible" : "")}
+      >
+        <a href={"/page" + (curPageNum + 2)}>
+          <FaAngleRight
+            className="h-8 w-8 rounded-lg bg-white p-1 text-gray-700"
+          />
+        </a>
+        <a href={"/page" + totalPageNum}>
+          <FaAngleDoubleRight
+            className="h-8 w-8 rounded-lg bg-white p-1 text-gray-700"
+          />
+        </a>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>

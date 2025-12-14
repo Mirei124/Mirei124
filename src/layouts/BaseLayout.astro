@@ -1,0 +1,19 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<div class="fixed top-0 left-0 z-10 flex w-full justify-center">
+  <Header />
+</div>
+<div class="h-16"></div>
+<div class="flex flex-1">
+  <div class="max-w-[compute((100vw - 50rem)/2)] flex-1">
+    <slot name="left" />
+  </div>
+  <div class="w-[49rem]"><slot name="main" /></div>
+  <div class="max-w-[compute((100vw - 50rem)/2)] flex-1">
+    <slot name="right" />
+  </div>
+</div>
+<Footer />
