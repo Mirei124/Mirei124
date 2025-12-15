@@ -8,11 +8,11 @@ import Footer from "../components/Footer.astro";
 </div>
 <div class="h-16"></div>
 <div class="flex flex-1">
-  <div class="hidden md:block max-w-[compute((100vw - 50rem)/2)] flex-1">
+  <div class="max-w-[compute((100vw - 50rem)/2)] hidden flex-1 md:block">
     <slot name="left" />
   </div>
   <div class="w-screen md:w-[49rem]"><slot name="main" /></div>
-  <div class="hidden md:block max-w-[compute((100vw - 50rem)/2)] flex-1">
+  <div class="max-w-[compute((100vw - 50rem)/2)] hidden flex-1 md:block">
     <slot name="right" />
   </div>
 </div>

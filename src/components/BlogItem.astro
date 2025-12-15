@@ -34,7 +34,9 @@ const pubDay = pubDate.getDate();
         <FaFolderOpen />&ensp;<a href={"/category/" + data.category}
           >{data.category}</a
         >&emsp;<FaTags />&ensp;{
-          data.tags.map((x: string) => <a href={"/tag/" + x}>{"#" + x}</a>)
+          data.tags.map((x: string) => (
+            <a href={"/tag/" + x}>{"#" + x}&ensp;</a>
+          ))
         }
       </div>
     </div>

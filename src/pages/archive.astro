@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseHead from "../components/BaseHead.astro";
+import { GoUnfold } from "react-icons/go";
+import { dateToString } from "../utils";
+
+const blogs = await getCollection("blog");
+blogs.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const groupByYear = blogs.reduce(
+  (acc, blog) => {
+    const year = blog.data.pubDate.getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(blog);
+    return acc;
+  },
+  {} as Record<number, typeof blogs>,
+);
+const availableYears = Object.keys(groupByYear)
+  .map((x) => parseInt(x))
+  .sort((a, b) => b - a);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="relative flex min-h-screen flex-col">
+    <BaseLayout>
+      <Fragment slot="main">
+        <div class="flex h-full flex-col">
+          <div class="h-8"></div>
+          <div class="flex flex-1 flex-col gap-8">
+            {
+              availableYears.map((year) => {
+                return (
+                  <div>
+                    <div class="mb-2 flex items-center">
+                      <div class="mr-2 w-1.5 rounded-lg bg-[var(--primary-color)]">
+                        &nbsp;
+                      </div>
+                      <div class="text-lg font-semibold">{`${year} 年`}</div>
+                    </div>
+                    {groupByYear[year].map((blog) => (
+                      <div class="m-2 flex max-w-full gap-2">
+                        <div class="flex-shrink-0">
+                          <a href={`/blog/${blog.id}`}>{blog.data.title}</a>
+                        </div>
+                        <div class="flex-1 overflow-hidden">
+                          {".".repeat(200)}
+                        </div>
+                        <div class="flex-shrink-0">
+                          {dateToString(blog.data.pubDate)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+      </Fragment>
+    </BaseLayout>
+  </body>
+</html>

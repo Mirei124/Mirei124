@@ -1,0 +1,65 @@
+---
+import { getCollection } from "astro:content";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseHead from "../components/BaseHead.astro";
+
+const blogs = await getCollection("blog");
+const allTagsSet = new Set<string>();
+blogs.forEach((blog) => {
+  blog.data.tags.forEach((tag) => allTagsSet.add(tag));
+});
+const allTags = Array.from(allTagsSet).sort();
+const allCategoriesSet = new Set<string>();
+blogs.forEach((blog) => {
+  allCategoriesSet.add(blog.data.category);
+});
+const allCategories = Array.from(allCategoriesSet).sort();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="relative flex min-h-screen flex-col">
+    <BaseLayout>
+      <Fragment slot="main">
+        <div class="flex h-full flex-col">
+          <div class="h-8"></div>
+          <div class="flex-1">
+            <div class="mb-2 flex items-center">
+              <div class="mr-2 w-1.5 rounded-lg bg-[var(--primary-color)]">
+                &nbsp;
+              </div><div class="text-lg font-semibold">Tags:</div>
+            </div>
+            <div class="flex flex-wrap">
+              {
+                allTags.map((tag) => (
+                  <a href={`/tags/${tag}`}>
+                    <div class="m-1 rounded bg-white px-2 py-1">{`#${tag}`}</div>
+                  </a>
+                ))
+              }
+            </div>
+            <div class="h-8"></div>
+            <div class="mb-2 flex items-center">
+              <div class="mr-2 w-1.5 rounded-lg bg-[var(--primary-color)]">
+                &nbsp;
+              </div><div class="text-lg font-semibold">Categories:</div>
+            </div>
+            <div class="flex flex-wrap">
+              {
+                allCategories.map((cat) => (
+                  <a href={`/categories/${cat}`}>
+                    <div class="m-1 rounded bg-white px-2 py-1">{`${cat}`}</div>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </Fragment>
+    </BaseLayout>
+  </body>
+</html>
