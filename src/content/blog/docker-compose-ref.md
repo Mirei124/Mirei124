@@ -6,7 +6,7 @@ tags: ["Docker"]
 category: "技术向"
 ---
 
-```yaml
+```yaml showLineNumbers
 # COMPOSE_PROJECT_NAME
 name: myapp
 

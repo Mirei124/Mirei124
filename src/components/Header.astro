@@ -3,24 +3,24 @@ import avator from "../assets/avator.webp";
 import { FaSun } from "react-icons/fa";
 import { Image } from "astro:assets";
 import { SITE_AUTHOR } from "../consts";
+import ThemeToggler from "./ThemeToggler";
 ---
 
 <div
-  class="mt-2 flex w-[50rem] items-center justify-between rounded-xl bg-[#ffffffdd] p-2 backdrop-blur"
+  class="mt-2 flex w-[50rem] items-center justify-between rounded-xl bg-[[var(--pane-semi)]] p-2 backdrop-blur"
 >
   <div class="hidden items-center md:flex">
     <a href="/"
       ><Image src={avator} alt="avator" class="ml-2 h-8 w-8 rounded-full" /></a
     >
     <a
-      class="mx-2 rounded p-2 text-xl font-semibold text-gray-800 hover:bg-[var(--lighten-color)]"
+      class="mx-2 rounded p-2 text-xl font-semibold text-[var(--gray-8)] hover:bg-[var(--lighten-color)]"
       href="/">{SITE_AUTHOR}</a
     >
   </div>
-  <nav class="text-xl font-semibold text-gray-800">
+  <nav class="text-xl font-semibold text-[var(--gray-8)]">
     <a class="mx-2 rounded p-2 hover:bg-[var(--lighten-color)]" href="/">博客</a
     >
-    <!-- TODO: -->
     <a class="mx-2 rounded p-2 hover:bg-[var(--lighten-color)]" href="/tags"
       >标签</a
     >
@@ -31,10 +31,8 @@ import { SITE_AUTHOR } from "../consts";
       >关于</a
     >
   </nav>
-  <div class="hidden min-w-36 justify-end text-gray-800 md:flex">
-    <FaSun
-      className="icon h-10 w-10 rounded p-2 text-2xl hover:bg-[var(--lighten-color)]"
-    />
+  <div class="hidden min-w-36 justify-end text-[var(--gray-8)] md:flex">
+    <ThemeToggler client:load />
     <!-- <FaSearch /> -->
   </div>
 </div>

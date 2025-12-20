@@ -37,7 +37,7 @@ const allCategories = Array.from(allCategoriesSet).sort();
               {
                 allTags.map((tag) => (
                   <a href={`/tags/${tag}`}>
-                    <div class="m-1 rounded bg-white px-2 py-1">{`#${tag}`}</div>
+                    <div class="m-1 rounded bg-[var(--pane-bg)] px-2 py-1">{`#${tag}`}</div>
                   </a>
                 ))
               }
@@ -52,7 +52,7 @@ const allCategories = Array.from(allCategoriesSet).sort();
               {
                 allCategories.map((cat) => (
                   <a href={`/categories/${cat}`}>
-                    <div class="m-1 rounded bg-white px-2 py-1">{`${cat}`}</div>
+                    <div class="m-1 rounded bg-[var(--pane-bg)] px-2 py-1">{`${cat}`}</div>
                   </a>
                 ))
               }

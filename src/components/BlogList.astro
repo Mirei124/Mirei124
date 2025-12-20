@@ -32,12 +32,12 @@ const { curPageBlogs, curPageNum, totalPageNum } = Astro.props;
       <div class={"flex gap-2" + (curPageNum === 0 ? " invisible" : "")}>
         <a href="/">
           <FaAngleDoubleLeft
-            className="h-8 w-8 rounded-lg bg-white p-1 text-gray-700"
+            className="h-8 w-8 rounded-lg bg-[var(--pane-bg)] p-1 text-[var(--gray-7)]"
           />
         </a>
         <a href={"/page" + curPageNum}>
           <FaAngleLeft
-            className="h-8 w-8 rounded-lg bg-white p-1 text-gray-700"
+            className="h-8 w-8 rounded-lg bg-[var(--pane-bg)] p-1 text-[var(--gray-7)]"
           />
         </a>
       </div>
@@ -49,13 +49,13 @@ const { curPageBlogs, curPageNum, totalPageNum } = Astro.props;
         ).map((x) =>
           x === curPageNum + 1 ? (
             <a href={"/page" + x}>
-              <div class="h-8 w-8 rounded-lg bg-[var(--lighten-color)] p-1 text-center font-semibold text-gray-700">
+              <div class="h-8 w-8 rounded-lg bg-[var(--lighten-color)] p-1 text-center font-semibold text-[var(--gray-7)]">
                 {x}
               </div>
             </a>
           ) : (
             <a href={"/page" + x}>
-              <div class="h-8 w-8 rounded-lg bg-white p-1 text-center font-semibold text-gray-700">
+              <div class="h-8 w-8 rounded-lg bg-[var(--pane-bg)] p-1 text-center font-semibold text-[var(--gray-7)]">
                 {x}
               </div>
             </a>
@@ -69,12 +69,12 @@ const { curPageBlogs, curPageNum, totalPageNum } = Astro.props;
       >
         <a href={"/page" + (curPageNum + 2)}>
           <FaAngleRight
-            className="h-8 w-8 rounded-lg bg-white p-1 text-gray-700"
+            className="h-8 w-8 rounded-lg bg-[var(--pane-bg)] p-1 text-[var(--gray-7)]"
           />
         </a>
         <a href={"/page" + totalPageNum}>
           <FaAngleDoubleRight
-            className="h-8 w-8 rounded-lg bg-white p-1 text-gray-700"
+            className="h-8 w-8 rounded-lg bg-[var(--pane-bg)] p-1 text-[var(--gray-7)]"
           />
         </a>
         <div></div>

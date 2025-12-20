@@ -15,7 +15,7 @@ const pubMonth = pubDate.getMonth() + 1;
 const pubDay = pubDate.getDate();
 ---
 
-<div class="my-4 rounded bg-white">
+<div class="my-4 rounded bg-[var(--pane-bg)]">
   <div class="flex">
     <div
       class="flex flex-col items-center justify-center rounded bg-[var(--lighten-color)] p-4"
@@ -30,7 +30,7 @@ const pubDay = pubDate.getDate();
         <div class="pb-2 text-xl font-semibold">{data.title}</div>
         <div class="break-all">{blog.body?.slice(0, 120)}</div>
       </a>
-      <div class="flex items-center text-sm text-gray-700">
+      <div class="flex items-center text-sm text-[var(--gray-7)]">
         <FaFolderOpen />&ensp;<a href={"/category/" + data.category}
           >{data.category}</a
         >&emsp;<FaTags />&ensp;{
