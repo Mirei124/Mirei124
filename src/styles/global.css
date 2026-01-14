@@ -50,7 +50,7 @@ code[data-line-numbers] {
   counter-reset: line;
 }
 
-code[data-line-numbers]>[data-line]::before {
+code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);
 
@@ -62,14 +62,14 @@ code[data-line-numbers]>[data-line]::before {
   color: gray;
 }
 
-code[data-line-numbers-max-digits="2"]>[data-line]::before {
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
   width: 1.25rem;
 }
 
-code[data-line-numbers-max-digits="3"]>[data-line]::before {
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 1.75rem;
 }
 
-code[data-line-numbers-max-digits="4"]>[data-line]::before {
+code[data-line-numbers-max-digits="4"] > [data-line]::before {
   width: 2.25rem;
 }

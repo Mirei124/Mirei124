@@ -31,11 +31,11 @@ const pubDay = `${pubDate.getDate()}`.padStart(2, "0");
         <div class="break-all">{blog.body?.slice(0, 120)}</div>
       </a>
       <div class="flex items-center text-sm text-[var(--gray-7)]">
-        <FaFolderOpen />&ensp;<a href={"/category/" + data.category}
+        <FaFolderOpen />&ensp;<a href={"/categories/" + data.category}
           >{data.category}</a
         >&emsp;<FaTags />&ensp;{
           data.tags.map((x: string) => (
-            <a href={"/tag/" + x}>{"#" + x}&ensp;</a>
+            <a href={"/tags/" + x}>{"#" + x}&ensp;</a>
           ))
         }
       </div>
