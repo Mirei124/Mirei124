@@ -11,8 +11,8 @@ const data = blog.data;
 
 const pubDate = data.pubDate;
 const pubYear = ("" + pubDate.getFullYear()).slice(2, 4);
-const pubMonth = pubDate.getMonth() + 1;
-const pubDay = pubDate.getDate();
+const pubMonth = `${pubDate.getMonth() + 1}`.padStart(2, "0");
+const pubDay = `${pubDate.getDate()}`.padStart(2, "0");
 ---
 
 <div class="my-4 rounded bg-[var(--pane-bg)]">
