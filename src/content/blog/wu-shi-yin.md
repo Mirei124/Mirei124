@@ -2,7 +2,7 @@
 title: "五十音和声调"
 pubDate: "2022-02-17T21:11"
 updatedDate: "2022-03-12T19:58"
-tags: ["日语"]
+tags: ["日本語"]
 category: "非技术"
 ---
 
