@@ -3,7 +3,7 @@
 <hr />
 <div>
   <a href="https://github.com/anuraghazra/github-readme-stats"><img
-      src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mirei124&amp;layout=compact&amp;theme=catppuccin_latte&amp;langs_count=6"
+      src="https://github-stats-extended.vercel.app/api/top-langs/?username=Mirei124&amp;layout=compact&amp;theme=catppuccin_latte&amp;langs_count=6"
       alt="Connor's Top Langs" /></a>
 </div>
 <p>
